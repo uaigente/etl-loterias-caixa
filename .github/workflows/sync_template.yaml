@@ -1,0 +1,56 @@
+name: Sync template from upstream
+
+on:
+  schedule:
+    # At 00:00 on Monday (UTC)
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream git@github.com:ziguraty/repo-template.git || true
+          git fetch upstream
+
+      - name: Check for upstream changes
+        id: diff
+        run: |
+          if git log HEAD..upstream/main --oneline | grep .; then
+            echo "changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create sync branch and merge
+        if: steps.diff.outputs.changes == 'true'
+        run: |
+          BRANCH="sync-template-$(date +%Y%m%d)"
+          git checkout -b "$BRANCH"
+          git merge upstream/main --no-edit
+
+          git push origin "$BRANCH"
+
+      - name: Create Pull Request
+        if: steps.diff.outputs.changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: ${{ github.ref_name }}
+          title: "Sync template updates"
+          body: |
+            This PR syncs the latest changes from the template repository.
+
+            Source: `upstream/main`
+          base: main
