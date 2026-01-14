@@ -1,5 +1,5 @@
 [project]
-name = 'repo-template-python'
+name = 'etl-loterias-caixa'
 version = '0.1.0'
 description = ''
 authors = [
@@ -17,7 +17,7 @@ dependencies = [
 package-mode = false
 
 [tool.repo-template]
-upstream = 'https://github.com/ziguraty/repo-template.git'
+upstream = 'https://github.com/ziguraty/repo-template-python.git'
 
 
 [build-system]
