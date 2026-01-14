@@ -1,0 +1,17 @@
+$schema: https://datapackage.org/profiles/2.0/datapackage.json
+name: etl-loterias-caixa
+title: ETL Loterias Caixa
+description: ETL dos dados das loterias da Caixa Econômica Federal
+version: 0.1.0
+resources:
+  - name: mega_sena
+    type: table
+    path: data-raw/Mega-Sena.xlsx
+    scheme: file
+    format: xlsx
+    mediatype: application/vnd.ms-excel
+    encoding: utf-8
+    dialect:
+      excel:
+        sheet: MEGA SENA
+    schema: schemas/mega_sena.yaml

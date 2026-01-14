@@ -9,7 +9,8 @@ readme = 'README.md'
 requires-python = '>=3.13,<4.0'
 dependencies = [
     'taskipy (>=1.14.1,<2.0.0)',
-    "python-dotenv (>=1.2.1,<2.0.0)"
+    "python-dotenv (>=1.2.1,<2.0.0)",
+    "frictionless[excel,pandas] (>=5.18.1,<6.0.0)",
 ]
 
 

@@ -1,0 +1,81 @@
+fields:
+  - name: Concurso
+    type: integer
+  - name: Data do Sorteio
+    type: date
+    format: "%d/%m/%Y"
+  - name: Bola1
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 60
+  - name: Bola2
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 60
+  - name: Bola3
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 60
+  - name: Bola4
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 60
+  - name: Bola5
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 60
+  - name: Bola6
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 60
+  - name: Ganhadores 6 acertos
+    type: integer
+  - name: Cidade / UF
+    type: any
+  - name: Rateio 6 acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Ganhadores 5 acertos
+    type: integer
+  - name: Rateio 5 acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Ganhadores 4 acertos
+    type: integer
+  - name: Rateio 4 acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Acumulado 6 acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Arrecadação Total
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Estimativa prêmio
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Acumulado Sorteio Especial Mega da Virada
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Observação
+    type: string
