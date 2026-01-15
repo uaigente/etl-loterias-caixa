@@ -7,6 +7,13 @@ resources:
   - name: mega_sena
     type: table
     path: data-raw/Mega-Sena.xlsx
+    sources:
+      - title: Resultados da Mega-Sena por ordem crescente.
+        path: https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados/download
+        method: get
+        timeout: 30
+        params:
+          modalidade: Mega-Sena
     scheme: file
     format: xlsx
     mediatype: application/vnd.ms-excel
