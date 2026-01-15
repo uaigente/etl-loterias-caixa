@@ -1,0 +1,19 @@
+from frictionless import Package
+import logging
+from pipelines import transform_pipeline
+
+logger = logging.getLogger(__name__)
+
+def transform_resource(resource_name: str, source_descriptor: str = 'datapackage.yaml'):
+    logger.info(f'Transforming resource {resource_name}')
+
+    package = Package(source_descriptor)
+    resource = package.get_resource(resource_name)
+    resource.transform(transform_pipeline)
+    table = resource.to_pandas()
+    breakpoint()
+    # for field in resource.schema.fields:
+    #     target = field.custom.get('target')
+    #     target = target if target else field.name.replace(' ', '_').lower()
+    #     table = etl.rename(table, field.name, target)
+    # etl.tocsv(table, f'data/{resource.name}.csv.gz', encoding='utf-8')
