@@ -58,3 +58,5 @@ pre_test = { cmd = 'task lint', help = 'Runs linters before running the tests.' 
 test = { cmd = 'pytest -s -x -vv', help = 'Runs unit tests.' }
 post_test = { cmd = 'coverage html', help = 'Generates a coverage report after the tests.' }
 extract = { cmd = 'python etl_loterias_caixa/extract.py', help = 'Extract resources.' }
+validate = { cmd = "frictionless validate datapackage.yaml", help = "Validate downloaded files." }
+etl = { cmd = "task extract && task validate", help = "Runs all ETL process. From extract to last validation." }

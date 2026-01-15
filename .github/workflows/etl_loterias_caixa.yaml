@@ -1,0 +1,62 @@
+name: Etl Loterias Caixa
+
+on:
+  schedule:
+    # Run daily at 6:00 AM UTC (3:00 AM BRT)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  etl-real-estate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+
+    - name: Run ETL process
+      run: |
+        poetry run task etl
+
+    - name: Configure Git
+      uses: fregante/setup-git-user@v2
+
+    - name: Commit and push changes
+      run: |
+        git add .
+        git diff --quiet && git diff --staged --quiet || git commit -m "Update loteria data - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+        git push
+
+    - name: Workflow failure notification
+      uses: JasonEtco/create-an-issue@v2
+      if: failure()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        filename: .github/workflow_etl_loterias_caixa_failure.md
