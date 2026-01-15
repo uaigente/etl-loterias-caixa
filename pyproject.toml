@@ -59,6 +59,6 @@ test = { cmd = 'pytest -s -x -vv', help = 'Runs unit tests.' }
 post_test = { cmd = 'coverage html', help = 'Generates a coverage report after the tests.' }
 extract = { cmd = 'python etl_loterias_caixa/extract.py', help = 'Extract resources.' }
 validate = { cmd = "frictionless validate datapackage.yaml", help = "Validate downloaded files." }
-transform = { cmd = "python etl_loterias_caixa/df_creation.py", help = "Transform downloaded files to csv." }
+transform = { cmd = "python etl_loterias_caixa/transform.py", help = "Transform downloaded files to csv." }
 etl = { cmd = "task extract && task validate && task transform", help = "Runs all ETL process. From extract to last validation." }
 act_etl = { cmd = "gh act workflow_dispatch --secret-file .env -W .github/workflows/etl_loterias_caixa.yaml", help = "Runs all ETL process locally using act." }
