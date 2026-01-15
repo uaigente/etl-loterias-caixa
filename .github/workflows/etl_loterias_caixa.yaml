@@ -1,4 +1,4 @@
-name: Etl Loterias Caixa
+name: Etl loterias Caixa
 
 on:
   schedule:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  etl-real-estate:
+  etl-loterias-caixa:
     runs-on: ubuntu-latest
 
     steps:
