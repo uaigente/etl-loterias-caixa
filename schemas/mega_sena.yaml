@@ -1,81 +1,101 @@
 fields:
   - name: Concurso
+    target: concurso
     type: integer
   - name: Data do Sorteio
+    target: dada_sorteio
     type: date
     format: "%d/%m/%Y"
   - name: Bola1
+    target: bola1
     type: integer
     constraints:
       minimum: 1
       maximum: 60
   - name: Bola2
+    target: bola2
     type: integer
     constraints:
       minimum: 1
       maximum: 60
   - name: Bola3
+    target: bola3
     type: integer
     constraints:
       minimum: 1
       maximum: 60
   - name: Bola4
+    target: bola4
     type: integer
     constraints:
       minimum: 1
       maximum: 60
   - name: Bola5
+    target: bola5
     type: integer
     constraints:
       minimum: 1
       maximum: 60
   - name: Bola6
+    target: bola6
     type: integer
     constraints:
       minimum: 1
       maximum: 60
   - name: Ganhadores 6 acertos
+    target: ganhadores_6_acertos
     type: integer
   - name: Cidade / UF
+    target: cidade_uf
     type: any
   - name: Rateio 6 acertos
+    target: rateio_6_acertos
     type: number
     decimalChar: ","
     groupChar: "."
     bareNumber: false
   - name: Ganhadores 5 acertos
+    target: ganhadores_5_acertos
     type: integer
   - name: Rateio 5 acertos
+    target: rateio_5_acertos
     type: number
     decimalChar: ","
     groupChar: "."
     bareNumber: false
   - name: Ganhadores 4 acertos
+    target: ganhadores_4_acertos
     type: integer
   - name: Rateio 4 acertos
+    target: rateio_4_acertos
     type: number
     decimalChar: ","
     groupChar: "."
     bareNumber: false
   - name: Acumulado 6 acertos
+    target: acumulado_6_acertos
     type: number
     decimalChar: ","
     groupChar: "."
     bareNumber: false
   - name: Arrecadação Total
+    target: arrecadacao_total
     type: number
     decimalChar: ","
     groupChar: "."
     bareNumber: false
   - name: Estimativa prêmio
+    target: estimativa_premio
     type: number
     decimalChar: ","
     groupChar: "."
     bareNumber: false
   - name: Acumulado Sorteio Especial Mega da Virada
+    target: acumulado_sorteio_especial_mega_da_virada
     type: number
     decimalChar: ","
     groupChar: "."
     bareNumber: false
   - name: Observação
+    target: observacao
     type: string
