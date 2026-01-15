@@ -1,8 +1,9 @@
-from frictionless import Package
 import logging
-from pipelines import transform_pipeline
+
+from frictionless import Package
 
 logger = logging.getLogger(__name__)
+
 
 def transform_resource(resource):
     """
@@ -16,11 +17,13 @@ def transform_resource(resource):
         target = target if target else field.name.replace(' ', '_').lower()
         df.rename(columns={field.name: target}, inplace=True)
 
-    df.to_csv(f'data/{resource.name}.csv',
-              index=False,
-              sep=',',
-              encoding='utf-8',
+    df.to_csv(
+        f'data/{resource.name}.csv',
+        index=False,
+        sep=',',
+        encoding='utf-8',
     )
+
 
 def transform_resources(descriptor: str = 'datapackage.yaml'):
     """
@@ -31,6 +34,7 @@ def transform_resources(descriptor: str = 'datapackage.yaml'):
 
     for resource in package.resources:
         transform_resource(resource)
+
 
 if __name__ == '__main__':
     transform_resources()
