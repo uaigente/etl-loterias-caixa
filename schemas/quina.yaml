@@ -1,0 +1,104 @@
+fields:
+  - name: Concurso
+    target: concurso
+    type: integer
+  - name: Data Sorteio
+    target: dada_sorteio
+    type: date
+    format: "%d/%m/%Y"
+  - name: Bola1
+    target: bola1
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 80
+  - name: Bola2
+    target: bola2
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 80
+  - name: Bola3
+    target: bola3
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 80
+  - name: Bola4
+    target: bola4
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 80
+  - name: Bola5
+    target: bola5
+    type: integer
+    constraints:
+      minimum: 1
+      maximum: 80
+  - name: Ganhadores 5 acertos
+    target: ganhadores_5_acertos
+    type: integer
+  - name: Cidade / UF
+    target: cidade_uf
+    type: any
+  - name: Rateio 5 acertos
+    target: rateio_5_acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Ganhadores 4 acertos
+    target: ganhadores_4_acertos
+    type: integer
+  - name: Rateio 4 acertos
+    target: rateio_4_acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Ganhadores 3 acertos
+    target: ganhadores_3_acertos
+    type: integer
+  - name: Rateio 3 acertos
+    target: rateio_3_acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Ganhadores 2 acertos
+    target: ganhadores_2_acertos
+    type: integer
+  - name: Rateio 2 acertos
+    target: rateio_2_acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Acumulado 5 acertos
+    target: acumulado_5_acertos
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Arrecadacao Total
+    target: arrecadacao_total
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Estimativa Premio
+    target: estimativa_premio
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: Acumulado Sorteio Especial Quina de São João
+    target: acumulado_sorteio_especial_quina_de_sao_joao
+    type: number
+    decimalChar: ","
+    groupChar: "."
+    bareNumber: false
+  - name: observação
+    target: observacao
+    type: string

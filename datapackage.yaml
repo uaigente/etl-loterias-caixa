@@ -22,3 +22,21 @@ resources:
       excel:
         sheet: MEGA SENA
     schema: schemas/mega_sena.yaml
+  - name: quina
+    type: table
+    path: data-raw/Quina.xlsx
+    sources:
+      - title: Resultados da Quina por ordem crescente.
+        path: https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados/download
+        method: get
+        timeout: 30
+        params:
+          modalidade: Quina
+    scheme: file
+    format: xlsx
+    mediatype: application/vnd.ms-excel
+    encoding: utf-8
+    dialect:
+      excel:
+        sheet: QUINA
+    schema: schemas/quina.yaml
