@@ -1,6 +1,7 @@
+import logging
+
 import requests
 from frictionless import Package
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +12,9 @@ def extract_resource(resource):
     """
     try:
         sources = resource.sources
-        sources = [source for source in sources if source.get('method') is not None]
+        sources = [
+            source for source in sources if source.get('method') is not None
+        ]
         source = sources[0]
         if source:
             logger.info(f'Extracting resource {resource.name}.')
@@ -21,7 +24,7 @@ def extract_resource(resource):
                 source['path'],
                 timeout=source['timeout'] if 'timeout' in source else 30,
                 params=source['params'] if 'params' in source else {},
-                )
+            )
             response.raise_for_status()
 
         with open(resource.path, 'wb') as f:
@@ -31,10 +34,10 @@ def extract_resource(resource):
         logger.info(f'File size: {len(response.content):,} bytes.')
 
     except requests.exceptions.RequestException as e:
-        print(f"Error downloading file: {e}")
+        print(f'Error downloading file: {e}')
         raise
     except IOError as e:
-        print(f"Error saving file: {e}")
+        print(f'Error saving file: {e}')
         raise
 
 
@@ -49,5 +52,5 @@ def extract_resources(descriptor: str = 'datapackage.yaml'):
         extract_resource(resource)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     extract_resources()
