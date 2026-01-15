@@ -60,3 +60,4 @@ post_test = { cmd = 'coverage html', help = 'Generates a coverage report after t
 extract = { cmd = 'python etl_loterias_caixa/extract.py', help = 'Extract resources.' }
 validate = { cmd = "frictionless validate datapackage.yaml", help = "Validate downloaded files." }
 etl = { cmd = "task extract && task validate", help = "Runs all ETL process. From extract to last validation." }
+act_etl = { cmd = "gh act workflow_dispatch --secret-file .env -W .github/workflows/etl_loterias_caixa.yaml", help = "Runs all ETL process locally using act." }
