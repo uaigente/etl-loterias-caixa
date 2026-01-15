@@ -3,6 +3,9 @@ import logging
 import requests
 from frictionless import Package
 
+from helpers import normalize_excel_with_libreoffice
+from pathlib import Path
+
 logger = logging.getLogger(__name__)
 
 
@@ -50,6 +53,10 @@ def extract_resources(descriptor: str = 'datapackage.yaml'):
 
     for resource in package.resources:
         extract_resource(resource)
+        if resource.to_pandas().empty:
+            logger.warning(
+                f'Dataframe {resource.name} is empty after extraction.')
+            normalize_excel_with_libreoffice(Path(resource.path))
 
 
 if __name__ == '__main__':
